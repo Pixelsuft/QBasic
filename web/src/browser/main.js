@@ -585,6 +585,16 @@
         {
             emulator.screen_go_fullscreen();
         };
+		
+		$("save_as_block").onclick = function()
+        {
+            emulator.keyboard_send_scancodes([
+                0x01,
+
+                // break codes
+                0x01 | 0x80,
+            ]);
+        };
 		$("lock_mouse").onclick = function()
 		{
 			emulator.lock_mouse();

@@ -99,9 +99,13 @@ function ScreenAdapter(screen_container, bus)
 		else if(text=="Quiting QBasic...                                                               ")
 		{
 			text="";
+			location.href="index.html";
 		}
 		else if(text=="Path not found                                                                  ")location.href="index.html";
-		else console.log(text);
+		else if(text=="┌─────────────── Save As ────────────────┐" || text=="│   Loaded file is not saved. Save it now?   │" || text=="┌───────────────────────────── Open ──────────────────────────────┐" || text=="┌──────────── Print ─────────────┐")
+		{
+			document.getElementById("save_as_block").onclick();
+		}
 		return text;
 	}
 
