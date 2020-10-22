@@ -1,8 +1,168 @@
-<html>
+<meta http-equiv="Content-Type" content="text/html; charset=ansi">
 <head>
 <title>QBasic</title>
-<script language="JavaScript" type="text/javascript">
-location.href="https://pixelsuft.github.io/QBasic/web/index.html";
-</script>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="shortcut icon" type="image/ico" href="/QBasic/web/icon.ico"/>
+<link rel="stylesheet" href="qbasic.css">
 </head>
-</html>
+<body>
+<div id="load_screen">
+  <div class="ring"></div>
+</div>
+<script src="loader.js"></script>
+<div id="root" style="display: none;">
+<div>
+    <div id="boot_options">
+		<input type="color" id="bg_blue" value="#0000aa">
+		<input type="color" id="bg_black" value="#000000">
+		<input type="color" id="bg_gr" value="#aaaaaa">
+		<input type="color" id="bg_red" value="#aa0000">
+		<input type="color" id="bg_down" value="#00aaaa">
+		<label>BackGround Colors</label><br>
+		<input type="color" id="fg_blue" value="#0000aa">
+		<input type="color" id="fg_black" value="#000000">
+		<input type="color" id="fg_gr" value="#aaaaaa">
+		<input type="color" id="fg_down" value="#ffffff">
+		<label>Colors</label>
+		<br>
+		<input type="button" value="Defaults" id="color_defs">
+		<input type="button" value="My Theme" id="color_lite">
+		<br><br>
+		<script language="JavaScript" type="text/javascript">
+			document.getElementById("color_defs").onclick=function(){
+				document.getElementById("bg_down").value="#00aaaa";
+				document.getElementById("bg_blue").value="#0000aa";
+				document.getElementById("bg_gr").value="#aaaaaa";
+				document.getElementById("bg_red").value="#aa0000";
+				document.getElementById("bg_black").value="#000000";
+				document.getElementById("fg_down").value="#ffffff";
+				document.getElementById("fg_blue").value="#0000aa";
+				document.getElementById("fg_gr").value="#aaaaaa";
+				document.getElementById("fg_black").value="#000000";
+			};
+			document.getElementById("color_lite").onclick=function(){
+				document.getElementById("bg_down").value="#3a96dd";
+				document.getElementById("bg_blue").value="#0037da";
+				document.getElementById("bg_gr").value="#cccccc";
+				document.getElementById("bg_red").value="#c50f1f";
+				document.getElementById("bg_black").value="#0c0c0c";
+				document.getElementById("fg_down").value="#f2f2f2";
+				document.getElementById("fg_blue").value="#0037da";
+				document.getElementById("fg_gr").value="#cccccc";
+				document.getElementById("fg_black").value="#0c0c0c";
+			};
+		</script>
+        <input type="button" value="Quick Start" id="start_qbasic">
+        <table>
+            <tr style="display: none">
+                <td width="250">CD image</td>
+                <td>
+                    <input type="file" id="cd_image">
+                </td>
+            </tr>
+
+            <tr style="display: none">
+                <td>Floppy disk image</td>
+                <td> <input type="file" id="floppy_image"><br></td>
+            </tr>
+
+            <tr>
+                <td>Project File</td>
+                <td><input type="file" id="hd_image"><br></td>
+            </tr>
+
+            <tr style="display: none">
+                <td>Multiboot kernel image</td>
+                <td><input type="file" id="multiboot_image"><br></td>
+            </tr>
+
+            <tr style="display: none">
+                <td>Memory size</td>
+                <td>
+                    <input id="memory_size" type="number" value="16" min="16" max="2048" step="16"> MB<br>
+                </td>
+            </tr style="display: none">
+
+            <tr style="display: none">
+                <td>Video Memory size</td>
+                <td>
+                    <input id="video_memory_size" type="number" value="2" min="1" max="128" step="1"> MB<br>
+                </td>
+            </tr>
+            <tr style="display: none">
+                <td>Boot order</td>
+                <td>
+                    <select id="boot_order">
+                        <option value="321">Floppy / Hard Disk / CD</option>
+                        <option value="213">CD / Floppy / Hard Disk</option>
+                        <option value="123">CD / Hard Disk / Floppy</option>
+                        <option value="231">Floppy / CD / Hard Disk</option>
+                        <option value="312">Hard Disk / Floppy / CD</option>
+                        <option value="132">Hard Disk / CD / Floppy</option>
+                    </select>
+                 </td>
+            </tr>
+        </table>
+        <button id="start_emulation">Start</button>
+    </div>
+
+    <div id="runtime_options" style="display: none">
+        <input type="button" value="Pause" id="run">
+        <input type="button" value="Exit" id="exit">
+        <input type="button" value="Lock mouse" id="lock_mouse">
+        <input type="button" value="Lol" id="save_as_block" style="display: none">
+        <input type="button" value="Get floppy image" id="get_fda_image" style="display: none">
+        <input type="button" value="Get second floppy image" id="get_fdb_image" style="display: none">
+        <input type="button" value="Save Project File" id="get_hda_image">
+        <input type="button" value="" id="get_hdb_image" style="display: none">
+        <input type="button" value="Get cdrom image" id="get_cdrom_image">
+        <input type="button" value="Save State" id="save_state">
+        <input type="button" value="Load State" id="load_state"> <input type="file" style="display: none" id="load_state_input">
+        <input type="button" value="Go fullscreen" id="fullscreen">
+        <input type="button" value="Take textshot" id="take_screenshot">
+
+        <label>
+            Scale:
+            <input type="number" min="0.25" step="0.25" value="1.0" id="scale" style="width: 50px">
+        </label>
+
+        <br>
+        <label id="change_fda" style="display: none">
+            Change floppy:
+            <input type="file">
+        </label>
+
+        <label id="change_cdrom" style="display: none">
+            Change CD:
+            <input type="file">
+        </label>
+
+    </div>
+
+    <pre style="margin: 0" id="log_levels"></pre>
+    <pre style="margin: 3px 0px 0px 0px" id="debug_infos"></pre>
+
+    <pre style="display: none" id="loading"></pre>
+
+    <br>
+</div>
+
+<div id="screen_container" style="display: none">
+    <div id="screen"></div>
+    <canvas id="vga"></canvas>
+	<div id="startup_screen">
+		<div class="ring"></div>
+	</div>
+    <div style="position: absolute; top: 0; z-index: 10">
+        <textarea class="phone_keyboard"></textarea>
+    </div>
+</div>
+
+<br style="clear:both"><br>
+
+<textarea readonly id="log" style="display:none"></textarea>
+
+<textarea spellcheck="false" cols="40" rows="12" id="serial" style="display:none">
+</textarea>
+</div>
+</body>
