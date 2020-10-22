@@ -102,7 +102,7 @@ function ScreenAdapter(screen_container, bus)
 			location.href="index.html";
 		}
 		else if(text=="Path not found                                                                  ")location.href="index.html";
-		else if(text=="┌─────────────── Save As ────────────────┐" || text=="│   Loaded file is not saved. Save it now?   │" || text=="┌───────────────────────────── Open ──────────────────────────────┐" || text=="┌──────────── Print ─────────────┐")
+		else if(text=="┌──────────────────────── Display ─────────────────────────┐" || text=="┌───────────────── Save ─────────────────┐" || text=="┌─────────────── Save As ────────────────┐" || text=="│   Loaded file is not saved. Save it now?   │" || text=="┌───────────────────────────── Open ──────────────────────────────┐" || text=="┌──────────── Print ─────────────┐")
 		{
 			document.getElementById("save_as_block").onclick();
 		}
