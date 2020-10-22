@@ -74,6 +74,7 @@ function ScreenAdapter(screen_container, bus)
 		if(is_bg)
 		{
 			if(result=="#00aaaa")result=document.getElementById("bg_down").value;
+			else if(result=="#aa0000")result=document.getElementById("bg_red").value;
 			else if(result=="#0000aa")result=document.getElementById("bg_blue").value;
 			else if(result=="#000000")result=document.getElementById("bg_black").value;
 			else if(result=="#aaaaaa")result=document.getElementById("bg_gr").value;
@@ -102,7 +103,7 @@ function ScreenAdapter(screen_container, bus)
 			location.href="index.html";
 		}
 		else if(text=="Path not found                                                                  ")location.href="index.html";
-		else if(text=="┌──────────────────────── Display ─────────────────────────┐" || text=="┌───────────────── Save ─────────────────┐" || text=="┌─────────────── Save As ────────────────┐" || text=="│   Loaded file is not saved. Save it now?   │" || text=="┌───────────────────────────── Open ──────────────────────────────┐" || text=="┌──────────── Print ─────────────┐")
+		else if(text=="┌───────────────────── Help Path ─────────────────────┐" || text=="┌──────────────────────── Display ─────────────────────────┐" || text=="┌───────────────── Save ─────────────────┐" || text=="┌─────────────── Save As ────────────────┐" || text=="│   Loaded file is not saved. Save it now?   │" || text=="┌───────────────────────────── Open ──────────────────────────────┐" || text=="┌──────────── Print ─────────────┐")
 		{
 			document.getElementById("save_as_block").onclick();
 		}
