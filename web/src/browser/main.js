@@ -626,7 +626,7 @@
 
         $("take_screenshot").onclick = function()
         {
-			var txt=document.getElementById("screen").textContent;
+			var txt=document.getElementById("screen").innerText;
 			dump_file(txt, "textshot.txt");
             $("take_screenshot").blur();
         };
