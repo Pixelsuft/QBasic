@@ -626,7 +626,7 @@
 
         $("take_screenshot").onclick = async function()
         {
-			let txt=document.getElementById("screen").textContent;
+			let txt=document.getElementById("screen").innerText;
 			await eel.cor_textshot(txt);
             $("take_screenshot").blur();
         };
